@@ -53,7 +53,7 @@ Namespace convention: types under `FlightStatus.Api/` use root namespace `Flight
 | Unknown   | No usable status returned by either provider |
 
 Priority: provider-explicit **Cancelled** / **Diverted** override timing rules.  
-Merge: prefer AeroTrack (full detail); fall back to QuickFlight.  
+Merge: if both providers return a result, prefer the one with the later `lastUpdatedUtc`; if only one responds, use that result; if neither responds, return **Unknown** with a clear message.  
 AeroTrack effective times: `Actual ?? Estimated` for delay calculation.
 
 ---

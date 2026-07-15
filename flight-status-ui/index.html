@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Status</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>Flight Status</h1>
+      <p class="subtitle">Look up unified status from AeroTrack and QuickFlight</p>
+    </header>
+
+    <section class="card search-card">
+      <form id="search-form" class="search-form">
+        <div class="field">
+          <label for="flight-number">Flight number</label>
+          <input
+            id="flight-number"
+            name="flightNumber"
+            type="text"
+            placeholder="e.g. BA100 or 111"
+            required
+            autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="flight-date">Date</label>
+          <input id="flight-date" name="date" type="date" required>
+        </div>
+        <button type="submit" class="btn-primary">Check status</button>
+      </form>
+    </section>
+
+    <div id="error-block" class="error-block hidden" role="alert"></div>
+
+    <section id="result-card" class="card result-card hidden" aria-live="polite">
+      <div class="result-header">
+        <h2 id="result-title">Flight status</h2>
+        <span id="status-badge" class="status-badge"></span>
+      </div>
+
+      <dl class="details-grid">
+        <div class="detail" id="row-scheduled-departure">
+          <dt>Scheduled departure</dt>
+          <dd id="scheduled-departure">—</dd>
+        </div>
+        <div class="detail" id="row-scheduled-arrival">
+          <dt>Scheduled arrival</dt>
+          <dd id="scheduled-arrival">—</dd>
+        </div>
+        <div class="detail" id="row-actual-departure">
+          <dt>Actual departure</dt>
+          <dd id="actual-departure">—</dd>
+        </div>
+        <div class="detail" id="row-actual-arrival">
+          <dt>Actual arrival</dt>
+          <dd id="actual-arrival">—</dd>
+        </div>
+        <div class="detail hidden optional" id="row-departure-terminal">
+          <dt>Departure terminal</dt>
+          <dd id="departure-terminal"></dd>
+        </div>
+        <div class="detail hidden optional" id="row-arrival-terminal">
+          <dt>Arrival terminal</dt>
+          <dd id="arrival-terminal"></dd>
+        </div>
+        <div class="detail hidden optional" id="row-departure-gate">
+          <dt>Departure gate</dt>
+          <dd id="departure-gate"></dd>
+        </div>
+        <div class="detail hidden optional" id="row-arrival-gate">
+          <dt>Arrival gate</dt>
+          <dd id="arrival-gate"></dd>
+        </div>
+        <div class="detail hidden optional" id="row-delay-reason">
+          <dt>Delay reason</dt>
+          <dd id="delay-reason"></dd>
+        </div>
+        <div class="detail" id="row-source">
+          <dt>Source</dt>
+          <dd id="source-provider">—</dd>
+        </div>
+        <div class="detail" id="row-updated">
+          <dt>Last updated</dt>
+          <dd id="last-updated">—</dd>
+        </div>
+        <div class="detail hidden optional full-width" id="row-message">
+          <dt>Note</dt>
+          <dd id="message"></dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
